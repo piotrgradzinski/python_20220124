@@ -1,5 +1,6 @@
 {
     "python.envFile": "${workspaceFolder}/.env",
     "terminal.integrated.env.osx": {"PYTHONPATH": "${workspaceFolder}"},
-    "terminal.integrated.env.windows": {"PYTHONPATH": "${workspaceFolder}"}
+    "terminal.integrated.env.windows": {"PYTHONPATH": "${workspaceFolder}"},
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
 }
