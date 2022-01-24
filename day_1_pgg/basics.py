@@ -107,3 +107,54 @@ Obsluga dat
 print(5 / 2)
 print(type(5 / 2))
 
+print('-' * 60)
+
+# Operatory porownania
+# zawsze zwracaja nam wartosc typu bool
+print(1 == 1)
+print(1 != 1)
+print(1 > 1)
+print(1 < 1)
+print(1 <= 1)
+print(1 >= 1)
+
+print('-' * 60)
+
+"""
+Operatory logiczne
+and / or - https://docs.python.org/3/reference/expressions.html#boolean-operations
+wartosci prawdziwe / falszywe (truthy and falsy values) - 
+"""
+print(True and False)
+print(True or False)
+print(not True)
+
+print('-' * 60)
+
+print('ala' or 'kot')
+print('' or 'kot')
+
+
+data_from_user = ''
+user_age = data_from_user or 0
+print(user_age)
+
+# Operatory przypisania
+my_number = 10
+# my_number + 5  # to nie zadziala!
+my_number = my_number + 5
+print(my_number)
+
+# zamiast pisac my_number = my_number + 5
+my_number += 5
+print(my_number)
+my_number -= 5
+my_number *= 5
+my_number /= 5
+my_number //= 5
+my_number **= 5
+my_number %= 5
+
+# my_number++  # w pythonie nie ma operatora ++, --
+my_number += 1
+my_number -= 1
