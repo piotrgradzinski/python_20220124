@@ -25,17 +25,18 @@ while True:
         break
 
     # jak poradzic sobie z uzytkownikiem, ktory nie wprowadzi porpawnych danych
-    if not input_data.isdecimal():
-        print('Podales nieprawidlowa wartosc!')
+    try: 
+        provided_number = float(input_data)
+
+        if found_min == None or provided_number < found_min:
+            found_min = provided_number
+
+        if found_max == None or provided_number > found_max:
+            found_max = provided_number
+    except ValueError:
+        print('Podales nieprawidlowa wartosc!!!')
         continue
-
-    provided_number = int(input_data)
-
-    if found_min == None or provided_number < found_min:
-        found_min = provided_number
-
-    if found_max == None or provided_number > found_max:
-        found_max = provided_number
+        
 
 if found_min is None or found_max is None:
     print('Nie podales zadnych liczb!!!')
