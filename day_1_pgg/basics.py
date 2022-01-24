@@ -158,3 +158,43 @@ my_number %= 5
 # my_number++  # w pythonie nie ma operatora ++, --
 my_number += 1
 my_number -= 1
+
+print('-' * 60)
+
+# instrukcje sterujace
+my_number = 35
+if my_number == 10:
+    print("Jestem w if")
+    print("Brawo! Liczba 10!!!")
+elif my_number == 20:
+    print("A tym raczem liczba 20.") 
+elif my_number == 30:
+    print("A tym raczem liczba 30.")
+# elif my_number >= 30 and my_number <= 40:
+elif 30 <= my_number <= 40:
+    print('Liczba z zakresu 30-40.')
+else:
+    print("Blok else")
+
+# Od Pythona 3.10 mamy do dyspozycji "switch", structural pattern matching - match - https://docs.python.org/3/whatsnew/3.10.html#pep-634-structural-pattern-matching
+
+print('Jestem poza ifem')
+
+
+# Petle - while
+i = 0
+while i < 10:
+    print(i)
+    i += 1  # w przypadku petli while trzeba uwazac na to, kiedy warunek bedzie falszy, bo inaczej bedziemy mieli petle nieskonczona
+
+# jak robimy petle nieskonczona
+while True:
+    input_data = input('Podaj dane [KONIEC]: ')
+    
+    if input_data.upper() == 'KONIEC':
+        break
+    
+    print(input_data.upper())
+
+print('Jetem poza petla')
+
