@@ -99,6 +99,11 @@ Obsluga dat
 - mozemy taki obiekt przerobic na napis poprzez strftime("%Y-%m-%d %H:%M:%S")
 """
 
-user_age = int(input("Podaj swoj wiek: "))
-print(user_age)
-print(type(user_age))
+# user_age = int(input("Podaj swoj wiek: "))
+# print(user_age)
+# print(type(user_age))
+
+
+print(5 / 2)
+print(type(5 / 2))
+
