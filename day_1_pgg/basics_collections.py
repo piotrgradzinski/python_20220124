@@ -236,3 +236,16 @@ print(my_dict[0])
 print(my_dict[False])
 
 
+
+print('-' * 60)
+
+from collections import defaultdict
+my_def_dict = defaultdict(float)
+print(my_def_dict)
+
+my_def_dict['unit_price'] += 30.5
+
+print(my_def_dict)
+print(my_def_dict['standard_price'])
+
+

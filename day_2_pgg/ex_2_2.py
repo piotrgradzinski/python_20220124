@@ -22,11 +22,11 @@ Od biznesu: wielkość liter nie ma znaczenia.
 user_input = input('Podaj napis: ')
 occurences = dict()
 
-for letter in user_input.lower():
-    if letter not in occurences:
-        occurences[letter] = 0
-    
-    occurences[letter] += 1
+for letter in user_input.lower():  # Ala ma kota
+    try:
+        occurences[letter] += 1
+    except KeyError:
+        occurences[letter] = 1
 
 for letter, number in occurences.items():
     print(f'{letter} = {number}')
