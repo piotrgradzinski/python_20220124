@@ -16,10 +16,16 @@ Przypadki testowe:
 
 def more_than(input_string: str, number_of_occurences: int = 2) -> set:
     input_string = input_string.lower()
-    result = set()
+    
+    return {letter for letter in input_string if input_string.count(letter) >= number_of_occurences}
 
-    for letter in input_string:
-        if input_string.count(letter) >= number_of_occurences:
-            result.add(letter)
 
-    return result
+"""
+result = set()
+
+for letter in input_string:
+    if input_string.count(letter) >= number_of_occurences:
+        result.add(letter)
+
+return result
+"""
