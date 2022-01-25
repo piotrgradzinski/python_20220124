@@ -235,10 +235,12 @@ print((1,2,3).__hash__())  # 529344067295497451
 print(my_dict[0])
 print(my_dict[False])
 
-
-
 print('-' * 60)
 
+
+"""
+Slownik domyslny
+"""
 from collections import defaultdict
 my_def_dict = defaultdict(float)
 print(my_def_dict)
@@ -248,4 +250,91 @@ my_def_dict['unit_price'] += 30.5
 print(my_def_dict)
 print(my_def_dict['standard_price'])
 
+print('-' * 60)
 
+"""
+Ziory (ang. set)
+"""
+
+my_set = {10, 20, 30, 40, 50}
+print(my_set)
+print(type(my_set))
+# print(my_set[0])  # TypeError: 'set' object is not subscriptable
+my_set.add(60)
+print(my_set)
+my_set.remove(10)
+print(my_set)
+
+print('-' * 60)
+
+"""
+Operacje teoriomnogosciowe na zbiorach
+"""
+
+a = {1, 2, 3}
+b = {1, 2, 4, 5}
+
+# suma
+print(a.union(b))
+print(a | b)
+
+# czesc wspolna - iloczyn
+print(a.intersection(b))
+print(a & b)
+
+# roznica - od a odejme b
+print(a - b)
+print(a.difference(b))
+
+# roznica symetryczna zbiorow - od sumy zbiorow odejmujemy czesc wspolna
+print(a.symmetric_difference(b))
+print(a ^ b)
+
+# czy a jest podzbiorem b
+print(a < b)
+c = {1, 2}
+print(c < a)
+
+print('-' * 60)
+
+"""
+Konwersja jednej kolekcji na druga
+"""
+
+my_list = [1, 2, 3, 3, 3, 1, 1, 2, 10, -1, 10, 5]
+print(my_list)
+
+set_based_on_list = set(my_list)
+print(set_based_on_list)
+
+my_list = list(set_based_on_list)
+print(my_list)
+
+my_list = list("Ala ma kota")
+print(my_list)
+
+my_set = set("Ala ma kota")
+print(my_set)
+
+
+for i in range(0, 11):
+    print(i)
+
+print('---')
+
+my_range = iter(range(0, 6))
+
+print(next(my_range))
+print(next(my_range))
+print(next(my_range))
+print(next(my_range))
+print(next(my_range))
+print(next(my_range))
+# print(next(my_range))  # StopIteration
+
+
+my_numbers = list(range(0, 6))
+print(my_numbers)
+
+my_numbers = list(range(11, 0, -1))
+print(my_numbers)
