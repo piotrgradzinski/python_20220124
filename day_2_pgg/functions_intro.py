@@ -146,3 +146,10 @@ print(1, 2, 43, 6 , 123, 123, 65, 2, 2, 4, 56, 7, 5, 3, 2, sep='"')
 print(1, 2, 43, 6 , 123, 123, 65, 2, 2, 4, 56, 7, 5, 3, 2, sep="'")
 
 
+
+import time
+
+start = time.perf_counter()
+time.sleep(1)
+stop = time.perf_counter()
+print(f'Duration: {stop-start} s')
