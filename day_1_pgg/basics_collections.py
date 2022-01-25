@@ -234,3 +234,5 @@ print((1,2,3).__hash__())  # 529344067295497451
 
 print(my_dict[0])
 print(my_dict[False])
+
+
