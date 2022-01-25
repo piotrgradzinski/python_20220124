@@ -146,10 +146,78 @@ print(1, 2, 43, 6 , 123, 123, 65, 2, 2, 4, 56, 7, 5, 3, 2, sep='"')
 print(1, 2, 43, 6 , 123, 123, 65, 2, 2, 4, 56, 7, 5, 3, 2, sep="'")
 
 
+print('-' * 60)
 
-import time
+"""
+Funkcje lambda
+- https://realpython.com/python-lambda/
+- https://en.wikipedia.org/wiki/First-class_function 
+- This means the language supports passing functions as arguments to other functions, returning them as the values from other functions, and assigning them to variables or storing them in data structures.
+- lambda argument1, argument2, ...: wartosc zwracana
+"""
 
-start = time.perf_counter()
-time.sleep(1)
-stop = time.perf_counter()
-print(f'Duration: {stop-start} s')
+def square(number):
+    return number ** 2
+
+print(square(4))
+
+
+square_lambda = lambda number: number ** 2
+print(square_lambda(4))
+
+print(square(10))
+
+my_variable = square
+print(my_variable(5))
+print(my_variable is square)
+
+"""
+obszar 1 (stos, stack)                                    obszar 2 (stera, heap)
+square = wartosc jest pod adresem 123                     adres 123: funkcja ...
+my_variable = wartosc jest pod adresem 123
+"""
+
+print('-' * 60)
+
+"""
+Funkcje jako kolejny typ danych.
+- funkcje mozemy traktowac jako kolejny typ danych
+- przypisywac referencje na funkcje do roznych zmiennych
+- funkcje mozemy przekazac jako argument do innej funkcji
+"""
+
+
+def executor(function_to_execute):
+    print('Uruchamiam executor')
+    function_to_execute()
+    print('Koncze executor')
+
+
+def my_function():
+    print('Ala ma kota')
+
+executor(my_function)
+
+executor(lambda: print('Kot ma kompilator'))
+
+print('---')
+
+def calculate_vat(amount):
+    return amount * 1.23
+
+invoices = [10, 20, 30, 40, 50]
+invoices2 = [100, 200, 300, 400, 500]
+invoices_with_vat = []
+
+for amount in invoices:
+    invoices_with_vat.append(calculate_vat(amount))
+
+print(invoices)
+print(invoices_with_vat)
+
+for x in map(calculate_vat, invoices):
+    print(x)
+
+
+invoices_with_vat = list(map(calculate_vat, invoices))
+print(invoices_with_vat)
