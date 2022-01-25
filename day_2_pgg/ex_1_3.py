@@ -22,17 +22,18 @@ products = {
     'marchew': 0.5,
 }
 
-for product, price in products.items():
-    print(f'{product} - {price:.2f} PLN / kg')
+try: 
+    for product, price in products.items():
+        print(f'{product} - {price:.2f} PLN / kg')
 
-user_choice = input('Jaki produkt chcesz kupic? ')
+    user_choice = input('Jaki produkt chcesz kupic? ')
 
-if user_choice not in products:
-    print(f'Niestety, nie mamy produktu {user_choice}.')
-    exit()  # jezeli nie byloby exit, to program poszedlby dalej
+    weight = float(input(f"Ile kilogramow produktu {user_choice} chcesz kupic? "))
 
-weight = float(input(f"Ile kilogramow produktu {user_choice} chcesz kupic? "))
+    due = products[user_choice] * weight
 
-due = weight * products[user_choice]
-
-print(f'Za {weight:.2f} kg produktu {user_choice} zaplacisz {due:.2f} PLN.')
+    print(f'Za {weight:.2f} kg produktu {user_choice} zaplacisz {due:.2f} PLN.')
+except KeyError:
+    print('Niestety, nie mamy takiego produktu na stanie.')
+except ValueError:
+    print('Podales nieprawidlowa wage.')

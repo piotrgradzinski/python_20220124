@@ -27,12 +27,8 @@ for product, price in products.items():
 
 user_choice = input('Jaki produkt chcesz kupic? ')
 
-if user_choice not in products:
-    print(f'Niestety, nie mamy produktu {user_choice}.')
-    exit()  # jezeli nie byloby exit, to program poszedlby dalej
-
 weight = float(input(f"Ile kilogramow produktu {user_choice} chcesz kupic? "))
 
-due = weight * products[user_choice]
+due = weight * products.get(user_choice, 0.0)
 
 print(f'Za {weight:.2f} kg produktu {user_choice} zaplacisz {due:.2f} PLN.')
