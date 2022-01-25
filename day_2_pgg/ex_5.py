@@ -10,8 +10,16 @@ Przykład użycia:
 2. Policzyc ile jest znakow (.count()) i dodac je do zbioru,
 ktory na koncu zwracamy
 
-Testy w tym przykladzie moa byc w tym samym pliku. 
 Przypadki testowe:
 ???
 """
 
+def more_than(input_string: str, number_of_occurences: int = 2) -> set:
+    input_string = input_string.lower()
+    result = set()
+
+    for letter in input_string:
+        if input_string.count(letter) >= number_of_occurences:
+            result.add(letter)
+
+    return result
