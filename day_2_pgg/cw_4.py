@@ -11,6 +11,12 @@ Przykład użycia:
 False
 > is_prime(17)
 True
-
 """
 
+def is_prime(number: int) -> bool:
+    """
+    Returns True if number if prime, False otherwise.
+    :param number: Number to be tested if is prime.
+    :return:
+    """
+    
