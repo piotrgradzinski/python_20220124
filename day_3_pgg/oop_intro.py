@@ -60,4 +60,91 @@ print(piotr_gg.get_full_name())
 
 print('---')
 
-print(piotr_gg)  # <__main__.Person object at 0x7fe7c805bca0>
+print(piotr_gg)  # przed zaimplementowaniem __str__: <__main__.Person object at 0x7fe7c805bca0>
+
+
+print('-' * 60)
+
+
+"""
+Paradygmaty programowania obiektowego (https://pl.wikipedia.org/wiki/Programowanie_obiektowe)
+- abstrakcja
+- hermetyzacja - ukrywanie implementacji
+- dziedziczenie
+- polimorfizm
+
+nazwy atrybutow i metod
+- bez podkreslenia - atrybut/metoda publiczna (public)
+- jedno podkreslenie - atrybut/metoda chroniona (protected)
+- dwa podkreslenia - atrybut/metoda prywatna (private) - przy takich atrybutach Python zmienia te 
+    nazwe gdybysmy sie chcieli dostac do niej z zewnetrz na _KLASA__atrybut - to sie nazywa name mangling
+
+Kiedy obiekt jednej klasy zawiera w sobie obiekty innych klas.
+- agregacja - na diagramie klas oznaczamy pustym rombem, "zawiera", Zajecia / Student
+- kompozycja - na diagramie klas oznaczamy pelnym rombem, "posiada", Dom / Pokoj
+"""
+
+class Group:
+    def __init__(self, group_name: str) -> None:
+        self.group_name = group_name
+        self.__group_members = []
+
+    def add_person(self, person: Person):
+        self.__group_members.append(person)
+
+    def whos_in_the_group(self):
+        print(f'{self.group_name} group members:')
+        for member in self.__group_members:
+            print(member)
+
+
+piotr_gg = Person('Piotr', 'GG')
+marek_kowalski = Person('Marek', 'Kowalski')
+
+family_group = Group('family')
+family_group.add_person(piotr_gg)
+family_group.add_person(marek_kowalski)
+
+family_group.whos_in_the_group()
+print(family_group.group_name)
+# print(family_group.__group_members)
+print(family_group._Group__group_members)
+
+print('-' * 60)
+
+import datetime
+from dateutil.relativedelta import relativedelta
+
+
+"""
+wlasciwosc / property - wyliczane atrybuty, 
+"""
+
+class Person:
+    def __init__(self, person_first_name, person_last_name, date_of_birth: str) -> None:
+        self.first_name = person_first_name
+        self.last_name = person_last_name
+        # https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+        self.date_of_birth = datetime.datetime.strptime(date_of_birth, '%Y-%m-%d')
+
+    def get_full_name(self) -> str:
+        return f'{self.first_name} {self.last_name}'
+
+    def __str__(self) -> str:
+        return f'Person ({self.get_full_name()})'
+
+    @property
+    def age(self) -> int:
+        # return datetime.datetime.now().year - self.date_of_birth.year
+        # mozemy zwracac caly obiekt relateviedelta albo tylko liczbe lat
+        return relativedelta(datetime.datetime.now(), self.date_of_birth).years
+
+
+piotr_gg = Person('Piotr', 'GG', "1970-01-01")
+print(piotr_gg.date_of_birth.year)
+print(piotr_gg.date_of_birth.month)
+print(piotr_gg.date_of_birth.day)
+print(piotr_gg.date_of_birth.strftime('%d.%m.%Y'))
+
+print(piotr_gg.first_name)
+print(piotr_gg.age)
