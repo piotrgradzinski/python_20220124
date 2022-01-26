@@ -2,6 +2,7 @@
 OOP - Object Oriented Programming
 Klasa - przepis na to jak zrobić obiekt
 Obiekt - instancja klasy, twor ktory z klasy powstaje, i jest odzwierciedleniem schematu
+nazwa klasy - PascalCase
 """
 
 piotr_gg = {
@@ -30,6 +31,7 @@ Z czego sklada sie klasa?
 - atrybuty - np. first_name, last_name, itd. Ze to takie zmienne, ale ktore siedza w obiekcie
 - metody - np. get_full_name - to nic innego jak funkcje, ktore dzialaja w kontekscie konkretnego obiektu
 - __init__ - tzw. dunder method - jest uruchamiana kiedy tworzy sie nowy obiekt danej klasy
+- 
 """
 
 class Person:
@@ -48,3 +50,7 @@ print(piotr_gg.last_name)
 print(piotr_gg.get_full_name())
 
 # print(Person.get_full_name(piotr_gg))
+
+print('---')
+
+print(piotr_gg)  # <__main__.Person object at 0x7fe7c805bca0>

@@ -19,3 +19,32 @@ Scenariusz:
 5. extra: dodać type hinting i dokumentcje metod
 """
 
+class Product:
+    def __init__(self, id: int, name: str, price: float) -> None:
+        """
+        New Product instance.
+        :param id:
+        :param name:
+        :param price:
+        """
+        self.id = id
+        self.name = name
+        self.price = price
+
+    def get_info(self) -> str:
+        """
+        Returns basic information about the Product
+        """
+        return f'Product "{self.name}", id: {self.id}, price: {self.price} PLN'
+
+    def print_info(self) ->  None:
+        """
+        Prints to the console information about the Product, based on .get_info().
+        """
+        print(self.get_info())
+
+
+product = Product(1, 'Woda', 10.99)
+product.print_info()
+product_info = product.get_info()
+print(product_info)
