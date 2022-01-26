@@ -186,3 +186,76 @@ for someone in my_list:
 print('-' * 60)
 
 print('-'.join(['Ala', 'Ela', 'Ola']))
+
+
+print('-' * 60)
+
+print('-' * 60)
+
+"""
+Wyjatki (exceptions)
+https://realpython.com/python-exceptions/
+https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+
+Lapanie wyjatkow - najpierw tworzymy bloki except do bardziej wyspecjalizowanych wyjatkow
+(takich, ktore sa nizej w sciezce dziedziczenia) a pozniej do bardziej ogolnych
+
+BaseException
+ +-- Exception
+      +-- ArithmeticError
+      |    +-- FloatingPointError
+      |    +-- OverflowError
+      |    +-- ZeroDivisionError
+      |    +-- DivisionByTwoError      
+"""
+
+class DivisionByTwoError(ArithmeticError):
+    pass
+
+def division(a, b):
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError('int type was expected')
+
+    if b == 2:
+        raise DivisionByTwoError('It is not possible to divide by 2')
+
+    return a / b
+
+
+try:
+    print('Przed division')
+    print(division(8, 3))
+    print('Po division')
+except ZeroDivisionError as e:
+    print('Uruchamiam blok except z ZeroDivisionError')
+    print(e)
+    print(type(e))
+    print(e.args)
+except TypeError as e:
+    print('Uruchamiam blok except z TypeError')
+    print(e)
+    print(type(e))
+    print(e.args)
+except DivisionByTwoError as e:
+    print('Uruchamiam blok except z DivisionByTwoError')
+    print(e)
+    print(type(e))
+    print(e.args)
+except ArithmeticError as e:
+    print('Uruchamiam blok except z ArithmeticError')
+    print(e)
+    print(type(e))
+    print(e.args)
+except Exception as e:
+    print('Uruchamiam blok except z Exception')
+    print(e)
+    print(type(e))
+    print(e.args)
+else:
+    # ten blok uruchomi sie tylko wtedy, kiedy nie zostanie rzucony zaden wyjatek
+    print('Uruchamiam else.')
+finally:
+    # ten blok uruchomi sie zawsze, czy bedzie wyjatek czy nie
+    print('Uruchamiam finally.')
+
+print('Jestem za try/except')
