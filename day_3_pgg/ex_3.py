@@ -28,5 +28,20 @@ False
 from day_3_pgg.ex_1 import Product
 
 class Basket:
-    pass
+    def __init__(self) -> None:
+        self._items = dict()
+
+    def add_product(self, product: Product, quantity: int = 1) -> None:
+        pass
+
+    def count_total_price(self) -> float:
+        pass
+
+    def generate_report(self) -> None:
+        pass
+
+    @property
+    def is_empty(self) -> bool:
+        pass
+    
 
