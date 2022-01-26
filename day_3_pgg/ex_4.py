@@ -17,18 +17,37 @@ Header
 Simple
 """
 
-class Document:
-    pass
-
 class Element:
-    pass
+    def __init__(self, content) -> None:
+        self.content = content
+
+    def __str__(self) -> str:
+        return f'{self.content}'
 
 class HeaderElement(Element):
-    pass
+    def __str__(self) -> str:
+        rendered_content = super().__str__()
+        return f'{rendered_content}\n{"=" * len(rendered_content)}'
 
 class LinkElement(Element):
-    pass
+    def __init__(self, content, url) -> None:
+        super().__init__(content)
+        self._url = url
 
+    def __str__(self) -> str:
+        return f'[{super().__str__()}]({self._url})'
+
+class Document:
+    def __init__(self) -> None:
+        self._elements = []
+
+    def add_element(self, element: Element) -> None:
+        self._elements.append(element)
+
+    def render(self) -> None:
+        rendered_elements = [str(element) for element in self._elements]
+        result = '\n'.join(rendered_elements)
+        print(result)
 
 document = Document()
 document.add_element(HeaderElement('Header'))
