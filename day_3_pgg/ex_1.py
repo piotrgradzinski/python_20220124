@@ -37,6 +37,9 @@ class Product:
         """
         return f'Product "{self.name}", id: {self.id}, price: {self.price} PLN'
 
+    def __str__(self) -> str:
+        return self.get_info()
+
     def print_info(self) ->  None:
         """
         Prints to the console information about the Product, based on .get_info().
@@ -48,3 +51,6 @@ product = Product(1, 'Woda', 10.99)
 product.print_info()
 product_info = product.get_info()
 print(product_info)
+
+product2 = Product(2, 'Pomidory', 3.99)
+print(product2)

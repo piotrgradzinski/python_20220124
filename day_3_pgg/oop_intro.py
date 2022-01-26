@@ -31,7 +31,10 @@ Z czego sklada sie klasa?
 - atrybuty - np. first_name, last_name, itd. Ze to takie zmienne, ale ktore siedza w obiekcie
 - metody - np. get_full_name - to nic innego jak funkcje, ktore dzialaja w kontekscie konkretnego obiektu
 - __init__ - tzw. dunder method - jest uruchamiana kiedy tworzy sie nowy obiekt danej klasy
-- 
+- dunder methods - to pewien zestaw wbudowanych na poziomie pythona metod, ktore moga pojawic sie w klasach, i ktore beda mialy pwne okreslone znaczenie
+    - lista metod magicznych (dunder methods) z przykladami: https://piotr.gg/python/python3-dunder-methods-summary.html
+    - __init__ - uruchamiana przy tworzeniu obiektu
+    - __str__ - urchamiana, kiedy python bedzie probowal przerobic nasz obiekt na str
 """
 
 class Person:
@@ -41,6 +44,9 @@ class Person:
 
     def get_full_name(self) -> str:
         return f'{self.first_name} {self.last_name}'
+
+    def __str__(self) -> str:
+        return f'Person ({self.get_full_name()})'
 
 
 piotr_gg = Person('Piotr', 'GG')
