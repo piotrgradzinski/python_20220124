@@ -17,3 +17,21 @@ Header
 Simple
 """
 
+class Document:
+    pass
+
+class Element:
+    pass
+
+class HeaderElement(Element):
+    pass
+
+class LinkElement(Element):
+    pass
+
+
+document = Document()
+document.add_element(HeaderElement('Header'))
+document.add_element(LinkElement('ABC', 'http://abc.com'))
+document.add_element(Element('Simple'))
+document.render()
