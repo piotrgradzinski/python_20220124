@@ -25,11 +25,13 @@ W sumie: 50.00'
 False
 """
 
+from collections import defaultdict
 from day_3_pgg.ex_1 import Product
 
 class Basket:
     def __init__(self) -> None:
-        self._items = dict()
+        # self._items = dict()
+        self._items = defaultdict(int)
 
     def add_product(self, product: Product, quantity: int = 1) -> None:
         if not isinstance(product, Product):
@@ -38,23 +40,31 @@ class Basket:
         if quantity <= 0:
             raise ValueError('Quantity has to be greater than 0.')
 
-        if product in self._items:
-            self._items[product] += quantity
-        else:
-            self._items[product] = quantity
+        # 1 sposob - zwykly slownik
+        # if product in self._items:
+        #     self._items[product] += quantity
+        # else:
+        #     self._items[product] = quantity
+
+        # 2 sposob - z wykorzystaniem defaultdict
+        self._items[product] += quantity
 
     def count_total_price(self) -> float:
-        total_price = 0.0
+        # 1 sposob
+        # total_price = 0.0
 
-        for product, quantity in self._items.items():
-            total_price += product.price * quantity
+        # for product, quantity in self._items.items():
+        #     total_price += product.price * quantity
 
-        return total_price
+        # return total_price
+
+        # 2 sposob
+        return sum([product.price * quantity for product, quantity in self._items.items()])
 
     def generate_report(self) -> None:
         print('Products in basket:')
         for product, quantity in self._items.items():
-            print(f'{product} x {quantity}')
+            print(f'- {product} x {quantity}')
         print(f'Total due: {self.count_total_price():.2f} PLN')
 
     def count_products(self) -> int:
@@ -62,10 +72,19 @@ class Basket:
 
     @property
     def is_empty(self) -> bool:
-        if len(self._items) == 0:
-            return True
-        else:
-            return False
+        # 1 sposob
+        # if len(self._items) == 0:
+        #     return True
+        # else:
+        #     return False
+
+        # 2 sposob
+        # return True if self.count_products() == 0 else False
+
+        # 3 sposob
+        # not 0 daje True, bo bool(0) -> False
+        return not self.count_products()
+        
 
 
 basket = Basket()
