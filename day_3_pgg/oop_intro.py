@@ -35,6 +35,7 @@ Z czego sklada sie klasa?
     - lista metod magicznych (dunder methods) z przykladami: https://piotr.gg/python/python3-dunder-methods-summary.html
     - __init__ - uruchamiana przy tworzeniu obiektu
     - __str__ - urchamiana, kiedy python bedzie probowal przerobic nasz obiekt na str
+- self - odniesienie do obiektu, na ktorym dana metoda jest wywolana, w innych jezykach to this
 """
 
 class Person:
