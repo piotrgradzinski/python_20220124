@@ -27,7 +27,8 @@ class Element:
 class HeaderElement(Element):
     def __str__(self) -> str:
         rendered_content = super().__str__()
-        return f'{rendered_content}\n{"=" * len(rendered_content)}'
+        # return f'{rendered_content}\n{"=" * len(rendered_content)}'
+        return rendered_content + '\n' + ('=' * len(rendered_content))
 
 class LinkElement(Element):
     def __init__(self, content, url) -> None:
@@ -42,6 +43,9 @@ class Document:
         self._elements = []
 
     def add_element(self, element: Element) -> None:
+        if not isinstance(element, Element):
+            raise TypeError('You can only add Element objects.')
+
         self._elements.append(element)
 
     def render(self) -> None:
