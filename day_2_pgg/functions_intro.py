@@ -221,3 +221,219 @@ for x in map(calculate_vat, invoices):
 
 invoices_with_vat = list(map(calculate_vat, invoices))
 print(invoices_with_vat)
+
+print('---')
+
+tmp_iter = map(calculate_vat, invoices)
+print(next(tmp_iter))
+print(next(tmp_iter))
+print(next(tmp_iter))
+print(next(tmp_iter))
+print(next(tmp_iter))
+# print(next(tmp_iter))  # StopIteration
+
+print('---')
+
+"""
+any()
+https://docs.python.org/3/library/functions.html?highlight=any#any
+"""
+my_list = [None, [], '', 0, False]
+print(any(my_list))  # False
+
+my_list = [None, [], '', 0, False, 12]
+print(any(my_list))  # True
+
+print('---')
+
+"""
+all()
+https://docs.python.org/3/library/functions.html?highlight=any#all
+"""
+my_list = [1, 'asd', [1,2,3], True]
+print(all(my_list))  # True
+
+my_list = [1, 'asd', [1,2,3], True, 0]
+print(all(my_list))  # False
+
+print('-' * 60)
+
+"""
+filter()
+https://docs.python.org/3/library/functions.html#filter
+"""
+
+my_list = [-10, 3, 5, -2, 0, 15]
+
+only_positive = list(filter(lambda x: x > 0, my_list))
+print(only_positive)
+
+print('---')
+
+"""
+reduce()
+https://realpython.com/python-reduce-function/
+"""
+from functools import reduce
+
+my_list = [-10, 3, 5, -2, 0, 15]
+my_sum = reduce(lambda a, b: a + b, my_list)
+print(my_sum)  # 11
+
+print('---')
+
+"""
+Sortowanie list
+"""
+
+my_list = [(2, 2), (3, 4), (4, 1), (1, 3)]
+
+print(my_list)
+
+# my_list.sort()
+my_list.sort(key=lambda element: element[1])
+
+print(my_list)
+
+print('---')
+
+from functools import cmp_to_key
+
+def comparer(a, b):
+    if a[1] < b[1]:
+        return -1
+    elif a[1] == b[1]:
+        return 0
+    else:
+        return 1
+
+
+my_list = [(2, 2), (3, 4), (4, 1), (1, 3)]
+print(my_list)
+my_list.sort(key=cmp_to_key(comparer))
+print(my_list)
+
+print('---')
+
+"""
+Zasiegi
+https://realpython.com/python-scope-legb-rule/ 
+
+W pythonie mamy 4 zasiegi:
+- Built-in scope
+    - Global (or module) scope
+        - Enclosing (or nonlocal) scope
+            - Local (or function) scope
+
+
+locals() - https://docs.python.org/3/library/functions.html#locals
+dir() - https://docs.python.org/3/library/functions.html#dir
+
+z zasiegu lokalnego moge siegac do globalnego (albo innego wyzszego zasiegu), ale nie odwrotnie
+"""
+
+from pprint import pprint
+
+print(dict)
+empty_dict = dict()
+print(empty_dict)
+
+pprint(dir())
+
+# jezeli odkomentuje ten kod, to nie bede mogl korzystac ze slownika, zastepuje wbudowany slownik w Pythona napisem 'Ala ma kota'
+# dict = 'Ala ma kota'
+# empty_dict = dict()
+# print(empty_dict)
+
+print('-' * 60)
+
+a = 1
+
+def fun_1():
+    a = 1000  # stworzylismy zmienna lokalna w zasiegu lokalnym (funkcyjnym)
+    print(f'fun_1 a={a}')
+
+
+print(f'global a={a}')
+fun_1()
+print(f'global a={a}')
+
+
+print('-' * 60)
+
+a = 1
+
+def fun_1(a):
+    print(f'fun_1 a={a}')
+
+
+print(f'global a={a}')
+fun_1(15)
+print(f'global a={a}')
+
+print('-' * 60)
+
+a = [1, 2, 3]
+
+def fun_1(my_list):
+    # w pythonie argumenty przekazywane sa przez referencje, czyli moze modyfikowac obiektu mutowalne, dostajemy sie do oryginalnego obiektu a nie operujemy na kopii
+    my_list.append(4)
+    print(f'fun_1 my_list={my_list}')
+
+
+print(f'global a={a}')
+fun_1(a)
+print(f'global a={a}')
+
+
+print('-' * 60)
+
+a = 1
+
+def fun_1(x1, x2):
+    a = 100
+    print(f'fun_1 a={a}')
+    print(f'x1 = {x1}')
+
+    def fun_2():
+        a = 1000
+        print(f'fun_2 a={a}')
+        print(f'x1 = {x1}')
+        print(f'x2 = {x2}')
+
+    fun_2()
+    print(f'fun_1 a={a}')
+
+
+
+print(f'global a={a}')
+fun_1(-10, -20)
+print(f'global a={a}')
+
+print('-' * 60)
+
+"""
+Wartosci domyslne, ktore nie sa typami niemutowalnymi
+Wartosciami domyslnymi powinny byc tylko wartosci typow niemutowalnych. 
+W przeciwnym wypadku, kazde uruchomienie funkcji bedzie dostawala ta sama wartosc domyslna, 
+czyli w naszym przypadku, caly czas te sama liste.
+"""
+def tax_fun(tax, list_of_taxes = None):
+    # list_of_taxes = list_of_taxes or []  # The expression x or y first evaluates x; if x is true, its value is returned; otherwise, y is evaluated and the resulting value is returned.
+    if list_of_taxes is None:
+        list_of_taxes = []
+
+    print('tax_fun', list_of_taxes)
+    list_of_taxes.append(tax)
+
+    return list_of_taxes
+
+
+result = tax_fun(23, [10,20,30])
+print('result', result)
+
+result = tax_fun(8)
+print('result', result)
+
+result = tax_fun(12)
+print('result', result)
