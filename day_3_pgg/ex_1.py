@@ -47,10 +47,11 @@ class Product:
         print(self.get_info())
 
 
-product = Product(1, 'Woda', 10.99)
-product.print_info()
-product_info = product.get_info()
-print(product_info)
+if __name__ == '__main__':
+    product = Product(1, 'Woda', 10.99)
+    product.print_info()
+    product_info = product.get_info()
+    print(product_info)
 
-product2 = Product(2, 'Pomidory', 3.99)
-print(product2)
+    product2 = Product(2, 'Pomidory', 3.99)
+    print(product2)
