@@ -32,16 +32,46 @@ class Basket:
         self._items = dict()
 
     def add_product(self, product: Product, quantity: int = 1) -> None:
-        pass
+        if not isinstance(product, Product):
+            raise TypeError('You can add only products.')
+
+        if quantity <= 0:
+            raise ValueError('Quantity has to be greater than 0.')
+
+        if product in self._items:
+            self._items[product] += quantity
+        else:
+            self._items[product] = quantity
 
     def count_total_price(self) -> float:
-        pass
+        total_price = 0.0
+
+        for product, quantity in self._items.items():
+            total_price += product.price * quantity
+
+        return total_price
 
     def generate_report(self) -> None:
-        pass
+        print('Products in basket:')
+        for product, quantity in self._items.items():
+            print(f'{product} x {quantity}')
+        print(f'Total due: {self.count_total_price():.2f} PLN')
+
+    def count_products(self) -> int:
+        return len(self._items)
 
     @property
     def is_empty(self) -> bool:
-        pass
-    
+        if len(self._items) == 0:
+            return True
+        else:
+            return False
 
+
+basket = Basket()
+product = Product(1, 'Woda', 10.00)
+basket.add_product(product, 5)
+print(basket.count_total_price())
+basket.generate_report()
+print(basket.count_products())
+print(basket.is_empty)
