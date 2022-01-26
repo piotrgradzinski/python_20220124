@@ -148,3 +148,36 @@ print(piotr_gg.date_of_birth.strftime('%d.%m.%Y'))
 
 print(piotr_gg.first_name)
 print(piotr_gg.age)
+
+
+print('-' * 60)
+
+
+class Student(Person):
+    def __init__(self, person_first_name, person_last_name, date_of_birth: str, field: str, index_number: str) -> None:
+        super().__init__(person_first_name, person_last_name, date_of_birth)
+        self.field = field
+        self.index_number = index_number
+
+    # przykrywam (ang. override) metode __str__ z rodzica, wersja dla Studenta
+    def __str__(self) -> str:
+        return f'Student ({self.first_name} {self.last_name}), {self.field}, index {self.index_number}'
+
+
+
+
+student1 = Student('Jan', 'Kowalski', '2000-05-20', 'informatyka', '12345')
+print(student1.age)
+print(student1)
+
+print('-' * 60)
+
+student1 = Student('Jan', 'Kowalski', '2000-05-20', 'informatyka', '12345')
+student2 = Student('Anna', 'Nowak', '2001-03-24', 'informatyka stosowana', '12346')
+person1 = Person('Piotr', 'GG', "1970-01-01")
+person2 = Person('Tomasz', 'Tomaszewski', '1980-07-22')
+
+my_list = [person1, student2, person2, student1]
+
+for someone in my_list:
+    print(someone.__str__())
