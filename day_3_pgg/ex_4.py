@@ -50,7 +50,7 @@ class Document:
 
     def render(self) -> None:
         rendered_elements = [str(element) for element in self._elements]
-        result = '\n'.join(rendered_elements)
+        result = '\n'.join(rendered_elements)  # join to metoda z str
         print(result)
 
 document = Document()

@@ -181,3 +181,8 @@ my_list = [person1, student2, person2, student1]
 
 for someone in my_list:
     print(someone.__str__())
+
+
+print('-' * 60)
+
+print('-'.join(['Ala', 'Ela', 'Ola']))
