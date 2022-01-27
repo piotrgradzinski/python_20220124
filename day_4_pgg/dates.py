@@ -11,6 +11,7 @@ Bedziemy korzystali z:
 
 import datetime
 from dateutil import tz, parser
+from dateutil.relativedelta import relativedelta
 
 # tworzenie
 # date
@@ -114,3 +115,35 @@ dt = parser.parse("2022-01-27T06:51:17.022635-03:30")
 print(dt)
 dt2 = dt.astimezone(tz.gettz('Europe/Warsaw'))
 print(dt2)
+
+
+"""
+Operacje na datach
+"""
+
+dt1 = datetime.datetime.now()
+dt2 = parser.parse("2020-06-16T15:18:33")
+print(dt1)
+print(dt2)
+
+dt3 = dt1 - dt2
+print(type(dt3))  # datetime.timedelta
+print(dt3)
+print(dt3.days)
+print(dt3.seconds)
+print(dt3.microseconds)
+
+dt3 = dt1 + datetime.timedelta(days=3)
+print(dt3)
+
+# delta miedzy dwiema datami
+dt_delta = relativedelta(dt1, dt2)
+print(dt_delta)
+print(dt_delta.years)
+print(dt_delta.months)
+print(dt_delta.days)
+print(dt_delta.hours)
+print(dt_delta.minutes)
+print(dt_delta.seconds)
+
+# do daty mozemy dodawac / odejmowac delte
