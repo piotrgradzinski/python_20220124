@@ -50,3 +50,61 @@ with open('day_4_pgg/test.txt', 'r+', encoding='utf-8') as file_handle:
 print(file_handle.closed)  # True
 
 print('Jestem poza with')
+
+print('-' * 60)
+
+with open('day_4_pgg/test.txt', 'r+', encoding='utf-8') as file_handle:
+    # jak mozemy odczytywac dane z pliku
+    content = file_handle.read()  # trzeba uwazac na wczytywanie duzych plikow
+    print(content)
+
+    print('---')
+
+    file_handle.seek(0)  # 1 - czytamy od drugiego znaku z pliku
+    content = file_handle.read()  # trzeba uwazac na wczytywanie duzych plikow
+    print(content)
+
+    print('---')
+
+    file_handle.seek(0)
+    content = file_handle.read(10)
+    print(content)
+    content = file_handle.read(10)
+    print(content)
+
+    print('---')
+
+    file_handle.seek(0)
+    content = file_handle.read(10)
+    print(content)
+
+    print('---')
+
+    file_handle.seek(0)
+    content = file_handle.readline()  # "Ala ma kota\n" - znak \n jest rowniez dolaczany
+    print(content)
+    content = file_handle.readline()
+    print(content)
+
+    print('---')
+
+    file_handle.seek(0)
+    content = file_handle.readline().rstrip('\n')  # usuniecie znaku nowej linii z konca wczytanej linii
+    print(content)
+    content = file_handle.readline()
+    print(content)
+
+print('---')
+
+# obrabianie duzych plikow
+with open('day_4_pgg/test.txt', 'r+', encoding='utf-8') as file_handle:
+    for line in file_handle:
+        print(line)
+
+
+print('---')
+
+with open('day_4_pgg/test.txt', 'r+', encoding='utf-8') as file_handle:
+    list_of_lines = list(file_handle)
+    print(list_of_lines)
+

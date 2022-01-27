@@ -54,8 +54,9 @@ Referencje - adres w pamieci komputera
 first_name = "Piotr"
 
 obszar 1 (stos, stack)                                    obszar 2 (stera, heap)
+my_list = wartosc jest pod adresem 100                    adres 456: [1,1,1,1,1,1,1,1]
 first_name = wartosc jest pod adresem 123                 adres 123: "Piotr"
-first_name2 = wartosc jest pod adresem 123
+first_name2 = wartosc jest pod adresem 123                adres 100: [1,2,2,22,2,2,2]
 
 first_name == first_name2 -> True
 first_name is first_name2 -> True
