@@ -108,3 +108,42 @@ with open('day_4_pgg/test.txt', 'r+', encoding='utf-8') as file_handle:
     list_of_lines = list(file_handle)
     print(list_of_lines)
 
+print('---')
+
+"""
+CSV
+"""
+
+import csv
+
+# zapis do CSV
+csv_data = [
+    ['first_name', 'last_name', 'salary'],
+    ['Piotr', 'GG', 1200],
+    ['Ala', 'Nowak', 25000],
+    ['Tomasz', 'Kowalski', 5200],
+    ['Jan', 'Nowak', 8000],
+    ['Krystyna', 'Tomaszewska', 10000],
+]
+
+with open('day_4_pgg/employees.csv', 'w') as file_handle:
+    writer = csv.writer(file_handle, dialect='excel', delimiter=';')
+
+    for row in csv_data:
+        writer.writerow(row)
+
+# odczyt z CSV
+with open('day_4_pgg/employees.csv') as file_handle:
+    data_from_csv = csv.DictReader(file_handle, delimiter=';')
+
+    for row in data_from_csv:
+        print(row)
+
+
+"""
+Excel
+openpyxl
+https://pypi.org/project/openpyxl/
+pip install openpyxl
+"""
+
