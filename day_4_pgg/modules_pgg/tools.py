@@ -1,15 +1,10 @@
 import datetime
 from dateutil.relativedelta import relativedelta
-
+from config import db_config
 
 my_string = "Ala ma kota"
 my_list = [10, 20, 30, 40, 50,]
-db_condig = {
-    'host': 'localhost',
-    'user': 'root',
-    'pass': 'root',
-    'db_name': 'payback_prod',
-}
+
 
 def added(a: int, b: int) -> int:
     return a + b
