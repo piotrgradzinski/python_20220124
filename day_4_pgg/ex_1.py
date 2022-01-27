@@ -24,3 +24,12 @@ W pliku z tym cwiczeniem policz:
 # from PAKIET.MODUL import cos
 # from mathematica.algebra.formulas import square_area
 # import PAKIET.MODUL
+
+from mathematica.geometry.figures import square_area
+print(square_area(5))
+
+# import mathematica.algebra.formulas
+# print(mathematica.algebra.formulas.divide(10, 2))
+
+import mathematica.algebra.formulas as mathfo
+print(mathfo.divide(10, 2))
