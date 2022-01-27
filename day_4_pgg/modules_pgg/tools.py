@@ -2,11 +2,12 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from config import db_config
 
+
 my_string = "Ala ma kota"
 my_list = [10, 20, 30, 40, 50,]
 
 
-def added(a: int, b: int) -> int:
+def adder(a: int, b: int) -> int:
     return a + b
 
 class Person:
@@ -36,4 +37,12 @@ class Student(Person):
 
 
 
-print('Ala ma kota  akot ma kompilator.')
+if __name__ == '__main__':
+    print('Ala ma kota a kot ma kompilator.')
+    print(db_config)
+
+    """
+    Jak uruchomie tools to bedzie __main__
+    Jak uruchomie usage1, gdzie tools jest importowane, to bedzie tools
+    """
+    print('name:', __name__)
