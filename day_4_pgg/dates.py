@@ -4,13 +4,18 @@ Daty
 https://realpython.com/python-datetime/
 https://realpython.com/python-packages/#dateutil-for-working-with-dates-and-times
 
+Przyklady dateutil: https://dateutil.readthedocs.io/en/stable/examples.html
+
+Dni wolne od pracy w roznych krajach:
+https://www.officeholidays.com/countries/poland
+
 Bedziemy korzystali z:
 - pakiet datetime - wbudowany w pythona, nie trzeba go instalowac
 - dateutil - trzeba go doinstalowac https://pypi.org/project/python-dateutil/
 """
 
 import datetime
-from dateutil import tz, parser
+from dateutil import tz, parser, rrule
 from dateutil.relativedelta import relativedelta
 
 # tworzenie
@@ -147,3 +152,63 @@ print(dt_delta.minutes)
 print(dt_delta.seconds)
 
 # do daty mozemy dodawac / odejmowac delte
+dt_now = datetime.datetime.now()
+
+dt3 = dt_now + relativedelta(months=1, days=2)
+print(dt3)
+
+dt3 = dt_now - relativedelta(months=1, days=2)
+print(dt3)
+
+dt3 = dt_now + relativedelta(months=-1, days=2)
+print(dt3)
+
+# pierwszy dzien poprzedniego miesiaca
+# jest istotna roznica miedzy days (ile dni odejmuje/dodaje) i day (ktory dzien mam ustawic)
+dt3 = dt_now - relativedelta(months=1, day=1)
+print(dt3)
+
+# pierwszy dzien aktualnego miesiaca
+dt3 = dt_now - relativedelta(day=1)
+print(dt3)
+
+# ostatni dzien poprzedniego miesiaca
+dt3 = dt_now - relativedelta(day=1, days=1)
+print(dt3)
+
+dt3 = dt_now - relativedelta(months=1, day=31)
+print(dt3)
+
+dt_march = parser.parse("2022-03-16T15:18:33")
+print(dt_march)
+
+dt3 = dt_march - relativedelta(months=1, day=31)  # day=31 to oznacza koniec miesiaca, niezaleznie czy ma 28, 29, 30, 31
+print(dt3)
+
+# pierwszy, ostatni dzien aktualnego miesiaca
+dt3 = dt_now + relativedelta(day=1)
+print(dt3)
+
+dt3 = dt_now + relativedelta(day=31)
+print(dt3)
+
+print('-' * 60)
+
+# Recurring Events
+# wtorek co dwa tygodnie
+my_rule = rrule.rrule(
+    rrule.WEEKLY,
+    byweekday=(rrule.TU),
+    interval=2,
+    dtstart=parser.parse("2022-01-01"), 
+    until=parser.parse("2022-12-31"),
+)
+
+for event in my_rule:
+    print(event)
+
+print('-' * 60)
+
+# drugi wtorek w miesiacu
+# do rozpracowania...
+
