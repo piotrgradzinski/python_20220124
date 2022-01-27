@@ -1,0 +1,18 @@
+{
+    "first_name": "Piotr",
+    "last_name": "GG",
+    "favourite_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+    ],
+    "is_trainer": true,
+    "favourite_brands": [
+        "PAYBACK",
+        "ALX"
+    ],
+    "additional_info": null
+}

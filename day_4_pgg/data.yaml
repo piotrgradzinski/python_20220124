@@ -1,0 +1,14 @@
+additional_info: null
+favourite_brands: !!python/tuple
+- PAYBACK
+- ALX
+favourite_numbers:
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+first_name: Piotr
+is_trainer: true
+last_name: GG

@@ -147,3 +147,101 @@ https://pypi.org/project/openpyxl/
 pip install openpyxl
 """
 
+from openpyxl import Workbook
+
+wb = Workbook()
+ws = wb.active
+
+xls_headers = ['first_name', 'last_name', 'salary']
+xls_data = [
+    ['Piotr', 'GG', 1200],
+    ['Ala', 'Nowak', 25000],
+    ['Tomasz', 'Kowalski', 5200],
+    ['Jan', 'Nowak', 8000],
+    ['Krystyna', 'Tomaszewska', 10000],
+]
+
+ws.append(xls_headers)
+
+for row in xls_data:
+    ws.append(row)
+
+wb.save('day_4_pgg/employees.xlsx')
+
+print('---')
+
+# wczytywanie XLSX
+from openpyxl import load_workbook
+
+wb = load_workbook('day_4_pgg/employees2.xlsx')
+
+for row in wb['Sheet2'].iter_rows(min_row=2):
+    print(row[0].value, row[1].value, row[2].value)
+
+print('---')
+
+print(wb.sheetnames)  # ['Sheet', 'Sheet2']
+
+print(wb['Sheet']['A3'].value)
+
+print('---')
+
+for col in wb['Sheet']['A:B']:
+    for cell in col:
+        print(cell.value)
+
+
+print('-' * 60)
+
+"""
+Formaty przechowywania danych
+- JSON - JavaScript Object Notation, https://pl.wikipedia.org/wiki/JSON
+- XML
+- YAML
+"""
+
+# JSON
+import json
+
+python_data = {
+    'first_name': 'Piotr',
+    'last_name': 'GG',
+    'favourite_numbers': [1, 2, 3, 4, 5, 6],
+    'is_trainer': True,
+    'favourite_brands': ('PAYBACK', "ALX"),
+    'additional_info': None,
+    # 'test': {1, 2, 3, 4, 5}  # zbioru nie bedzie w stanie zapisac do JSONa
+}
+
+with open('day_4_pgg/data.json', 'w') as file_handle:
+    print(json.dump(python_data, file_handle, indent=4))
+
+from pprint import pprint
+
+with open('day_4_pgg/data.json') as file_handle:
+    restored_python_data = json.load(file_handle)
+    pprint(restored_python_data)
+
+
+print('------')
+
+print(json.dumps(python_data, indent=4))
+
+
+"""
+Zadawanie zapytan w strukturze JSON
+jmespath - https://pypi.org/project/jmespath/
+jsonpath-ng - https://pypi.org/project/jsonpath-ng/
+jq - https://pypi.org/project/jq/ , https://stedolan.github.io/jq/
+"""
+
+"""
+YAML - https://pl.wikipedia.org/wiki/YAML
+
+pip install PyYAML
+"""
+
+import yaml
+
+with open('day_4_pgg/data.yaml', 'w') as file_handle:
+    yaml.dump(python_data, file_handle)
