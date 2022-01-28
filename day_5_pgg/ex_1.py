@@ -31,4 +31,4 @@ with open('day_5_pgg/employees_report.json', 'w') as file_handle:
         'salaries_sum': salaries_sum,
         'salaries_mean': salaries_mean,
     }
-    json.dump(json_data, file_handle)
+    json.dump(json_data, file_handle, indent=4)
