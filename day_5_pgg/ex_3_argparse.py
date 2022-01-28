@@ -5,6 +5,13 @@ Argumenty:
 - file - plik ktory bedziemy czytac
 - -s --start-with - poczatkowy numer od ktorego wyswietlamy wiersze, domyslnie 1
 - -n --hide-line-numbers - ukrywa wyswietlanie numerow linii
+
+Logging:
+- dodac argument -v --verbosity, jak w argparse_intro
+- jezeli verbosity=1 to logujemy na poziomie WARNING
+- jezeli verbosity=2 to logujemy na poziomie DEBUG
+- w pozostalych przypadkach poziom CRITICAL
+- dodajemy logowanie na roznych poziomach w naszym kodzie
 """
 
 import argparse
@@ -17,7 +24,9 @@ parser.add_argument('-n', '--hide-line-numbers', action='store_true', help='Hide
 arguments = parser.parse_args()
 
 try:
+
     with open(arguments.file) as file_handle:
+        
         for line_number, line in enumerate(file_handle, start=arguments.start_with):
             # if arguments.hide_line_numbers:
             #     print(line[:-1])
