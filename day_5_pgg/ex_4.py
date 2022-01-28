@@ -42,8 +42,17 @@ ws = wb.active
 
 ws.append(['Country', 'Year', 'Total'])
 
-for country, yearly_data in report_data.items():
-    for year, total in yearly_data.items():
+"""
+sorted(report_data.items()) - sortujemy liste tupli (kazda tupla to klucz i wartosc), 
+standardowo jak sortujemy tuple, to sortujemy po wartosci pod kluczem 0.
+"""
+
+for country, yearly_data in sorted(report_data.items()):
+    for year, total in sorted(yearly_data.items()):
         ws.append([country, year, total])
+
+# https://openpyxl.readthedocs.io/en/stable/filters.html
+ws.auto_filter.ref = "A:C"
+ws.auto_filter.add_filter_column(0, ["Austria"])
 
 wb.save('day_5_pgg/invoices_report.xlsx')
