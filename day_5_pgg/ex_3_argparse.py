@@ -16,9 +16,15 @@ parser.add_argument('-n', '--hide-line-numbers', action='store_true', help='Hide
 
 arguments = parser.parse_args()
 
+try:
+    with open(arguments.file) as file_handle:
+        for line_number, line in enumerate(file_handle, start=arguments.start_with):
+            # if arguments.hide_line_numbers:
+            #     print(line[:-1])
+            # else:
+            #     print(f'{line_number}: {line[:-1]}')
 
-file_name = 'day_4_pgg/emails.txt'
-
-with open(file_name) as file_handle:
-    for line_number, line in enumerate(file_handle, start=1):
-        print(f'{line_number}: {line[:-1]}')
+            print(f'{str(line_number) + ": " if not arguments.hide_line_numbers else ""}{line[:-1]}')
+except FileNotFoundError:
+    print(f'File {arguments.file} not found.')
+    exit(1)
