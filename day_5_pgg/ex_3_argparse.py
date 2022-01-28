@@ -7,6 +7,16 @@ Argumenty:
 - -n --hide-line-numbers - ukrywa wyswietlanie numerow linii
 """
 
+import argparse
+
+parser = argparse.ArgumentParser('ex_3_argparse.py')
+parser.add_argument('file', type=str, help='File name to process.')
+parser.add_argument('-s', '--start-with', type=int, default=1, help='Initial line number. Default 1.')
+parser.add_argument('-n', '--hide-line-numbers', action='store_true', help='Hide line numbers.')
+
+arguments = parser.parse_args()
+
+
 file_name = 'day_4_pgg/emails.txt'
 
 with open(file_name) as file_handle:
