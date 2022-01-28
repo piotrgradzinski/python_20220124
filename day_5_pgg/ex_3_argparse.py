@@ -31,7 +31,7 @@ elif arguments.verbosity == 2:
 else:
     log_level = logging.CRITICAL
 
-logging.basicConfig(level=log_level, format='%(asctime)s|%(levelname)s|%(message)s')
+logging.basicConfig(level=log_level, format='%(asctime)s|%(levelname)s|%(pathname)s|%(lineno)d|%(message)s')
 
 try:
     logging.debug(f'Opening file {arguments.file}')
